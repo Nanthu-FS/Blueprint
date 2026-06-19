@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="1040" viewBox="0 0 920 1040" font-family="'Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a12"/>
+      <stop offset="1" stop-color="#0e0b18"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#8b5cf6"/>
+    </marker>
+    <style>
+      .box{fill:rgba(255,255,255,0.035);stroke:rgba(255,255,255,0.12);stroke-width:1.2;rx:16;}
+      .accentbox{fill:rgba(139,92,246,0.10);stroke:rgba(139,92,246,0.55);stroke-width:1.4;}
+      .cyanbox{fill:rgba(34,211,238,0.08);stroke:rgba(34,211,238,0.5);stroke-width:1.4;}
+      .t{fill:#e8eaf5;font-size:16px;font-weight:600;}
+      .s{fill:#a6abc4;font-size:12.5px;}
+      .lbl{fill:#71768f;font-size:11.5px;font-style:italic;}
+      .edge{stroke:#8b5cf6;stroke-width:1.8;fill:none;}
+    </style>
+  </defs>
+
+  <rect width="920" height="1040" fill="url(#bg)"/>
+  <circle cx="120" cy="120" r="220" fill="#8b5cf6" opacity="0.06"/>
+  <circle cx="800" cy="820" r="240" fill="#22d3ee" opacity="0.05"/>
+
+  <text x="460" y="46" text-anchor="middle" fill="#e8eaf5" font-size="26" font-weight="700">Blue<tspan fill="url(#accent)">print</tspan></text>
+  <text x="460" y="70" text-anchor="middle" class="s">sketch → live UI · fully local · Ollama gemma4:12b vision</text>
+
+  <!-- 1 Capture -->
+  <rect class="box" x="300" y="96" width="320" height="62" rx="16"/>
+  <text x="460" y="122" text-anchor="middle" class="t">Capture sketch</text>
+  <text x="460" y="142" text-anchor="middle" class="s">drop · upload · camera · demo</text>
+
+  <line class="edge" x1="460" y1="158" x2="460" y2="184" marker-end="url(#arrow)"/>
+
+  <!-- 2 Downscale -->
+  <rect class="box" x="300" y="186" width="320" height="62" rx="16"/>
+  <text x="460" y="212" text-anchor="middle" class="t">Downscale → base64</text>
+  <text x="460" y="232" text-anchor="middle" class="s">canvas ~1200px · lib/image.ts</text>
+
+  <line class="edge" x1="460" y1="248" x2="460" y2="274" marker-end="url(#arrow)"/>
+
+  <!-- 3 API -->
+  <rect class="box" x="300" y="276" width="320" height="62" rx="16"/>
+  <text x="460" y="302" text-anchor="middle" class="t">POST /api/generate</text>
+  <text x="460" y="322" text-anchor="middle" class="s">prompt (lib/prompt.ts) + image</text>
+
+  <line class="edge" x1="460" y1="338" x2="460" y2="364" marker-end="url(#arrow)"/>
+
+  <!-- 4 Ollama -->
+  <rect class="accentbox" x="290" y="366" width="340" height="74" rx="16"/>
+  <text x="460" y="394" text-anchor="middle" class="t">Ollama · gemma4:12b vision</text>
+  <text x="460" y="414" text-anchor="middle" class="s">stream:true · think:false · keep_alive 30m</text>
+  <text x="460" y="431" text-anchor="middle" class="lbl">lib/ollama.ts</text>
+
+  <line class="edge" x1="460" y1="440" x2="460" y2="466" marker-end="url(#arrow)"/>
+  <text x="476" y="458" class="lbl">NDJSON tokens → raw HTML</text>
+
+  <!-- 5 Stream -->
+  <rect class="box" x="300" y="468" width="320" height="58" rx="16"/>
+  <text x="460" y="492" text-anchor="middle" class="t">ReadableStream (text)</text>
+  <text x="460" y="512" text-anchor="middle" class="s">route transform · SSE-style</text>
+
+  <line class="edge" x1="460" y1="526" x2="460" y2="552" marker-end="url(#arrow)"/>
+
+  <!-- 6 hook -->
+  <rect class="box" x="300" y="554" width="320" height="58" rx="16"/>
+  <text x="460" y="578" text-anchor="middle" class="t">useOllamaStream</text>
+  <text x="460" y="598" text-anchor="middle" class="s">cleanBodyHtml() · rAF coalesced</text>
+
+  <!-- branch -->
+  <path class="edge" d="M460,612 L460,634 L250,634 L250,664" marker-end="url(#arrow)"/>
+  <path class="edge" d="M460,612 L460,634 L670,634 L670,664" marker-end="url(#arrow)"/>
+
+  <!-- CodePanel -->
+  <rect class="box" x="110" y="666" width="280" height="70" rx="16"/>
+  <text x="250" y="692" text-anchor="middle" class="t">CodePanel</text>
+  <text x="250" y="712" text-anchor="middle" class="s">live code · copy · .html</text>
+  <text x="250" y="729" text-anchor="middle" class="s">refine input</text>
+
+  <!-- LivePreview -->
+  <rect class="cyanbox" x="530" y="666" width="290" height="90" rx="16"/>
+  <text x="675" y="692" text-anchor="middle" class="t">LivePreview iframe</text>
+  <text x="675" y="712" text-anchor="middle" class="s">postMessage('bp:html')</text>
+  <text x="675" y="730" text-anchor="middle" class="s">→ innerHTML injection</text>
+  <text x="675" y="748" text-anchor="middle" class="lbl">sandbox="allow-scripts"</text>
+
+  <line class="edge" x1="675" y1="756" x2="675" y2="782" marker-end="url(#arrow)"/>
+
+  <!-- Tailwind render -->
+  <rect class="box" x="530" y="784" width="290" height="64" rx="16"/>
+  <text x="675" y="810" text-anchor="middle" class="t">Tailwind Play CDN (async)</text>
+  <text x="675" y="830" text-anchor="middle" class="s">styles it → live render, no reload</text>
+
+  <!-- Refine loop back arrow -->
+  <path class="edge" stroke-dasharray="5 5" d="M250,736 L250,910 L150,910 L150,307 L296,307" marker-end="url(#arrow)"/>
+  <rect class="box" x="150" y="884" width="220" height="52" rx="14"/>
+  <text x="260" y="906" text-anchor="middle" class="t" font-size="14">Refine loop</text>
+  <text x="260" y="924" text-anchor="middle" class="s">instruction + current HTML</text>
+
+  <text x="460" y="1000" text-anchor="middle" class="s">Next.js 14 · TypeScript · Tailwind · Framer Motion · no cloud, no API keys</text>
+</svg>
