@@ -108,7 +108,7 @@ export default function CodePanel({ html, status, elapsed, onRefine, onStop }: P
         >
           <code className="whitespace-pre-wrap break-words">
             {hasContent ? html : ''}
-            {generating && <span className="ml-0.5 inline-block w-2 animate-caret text-violet-bright">▌</span>}
+            {generating && <span className="ml-0.5 inline-block w-2 animate-caret text-amber-bright">▌</span>}
             {!hasContent && !generating && (
               <span className="text-ink-faint">{'<!-- generated markup will stream here -->'}</span>
             )}
@@ -132,12 +132,12 @@ export default function CodePanel({ html, status, elapsed, onRefine, onStop }: P
             onChange={(e) => setRefine(e.target.value)}
             disabled={!hasContent || generating}
             placeholder="make the header dark, add a footer…"
-            className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm text-ink placeholder:text-ink-faint outline-none transition focus:border-violet/60 focus:shadow-glow-violet disabled:opacity-40"
+            className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm text-ink placeholder:text-ink-faint outline-none transition focus:border-amber/60 focus:shadow-glow-amber disabled:opacity-40"
           />
           <button
             type="submit"
             disabled={!hasContent || generating || !refine.trim()}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-violet to-cyan px-3.5 py-2.5 text-sm font-semibold text-base-800 shadow-glow-violet transition hover:brightness-110 active:scale-[0.97] disabled:opacity-40 disabled:shadow-none cursor-pointer"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber to-steel px-3.5 py-2.5 text-sm font-semibold text-base-800 shadow-glow-amber transition hover:brightness-110 active:scale-[0.97] disabled:opacity-40 disabled:shadow-none cursor-pointer"
           >
             <WandIcon width={16} height={16} />
           </button>

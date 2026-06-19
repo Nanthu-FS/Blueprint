@@ -44,12 +44,12 @@ export default function BrandBar({ canGenerate, generating, onGenerate }: Props)
       ? { dot: 'bg-danger', text: 'Ollama offline', glow: '' }
       : !health.modelReady
         ? { dot: 'bg-amber-400', text: `${health.model} missing`, glow: '' }
-        : { dot: 'bg-ok', text: `${health.model} ready`, glow: 'shadow-glow-cyan' };
+        : { dot: 'bg-ok', text: `${health.model} ready`, glow: 'shadow-glow-steel' };
 
   return (
     <header className="flex items-center justify-between gap-4 px-1 py-1">
       <div className="flex items-center gap-3">
-        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-violet to-cyan text-base-800 shadow-glow-violet">
+        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-amber to-steel text-base-800 shadow-glow-amber">
           <SparkIcon width={22} height={22} />
         </div>
         <div>
@@ -72,7 +72,7 @@ export default function BrandBar({ canGenerate, generating, onGenerate }: Props)
           onClick={onGenerate}
           disabled={!canGenerate || generating}
           whileTap={{ scale: 0.96 }}
-          className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet via-violet-bright to-cyan px-5 py-2.5 font-display text-sm font-semibold text-base-800 shadow-glow-violet transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none cursor-pointer"
+          className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber via-amber-bright to-steel px-5 py-2.5 font-display text-sm font-semibold text-base-800 shadow-glow-amber transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none cursor-pointer"
         >
           {generating ? (
             <>

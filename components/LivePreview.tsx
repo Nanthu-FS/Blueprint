@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { MonitorIcon, TabletIcon, PhoneIcon, SparkIcon } from './Icons';
+import { MonitorIcon, TabletIcon, PhoneIcon, SparkIcon } from './Icons'; // accent: amber/steel
 import type { GenStatus } from '@/hooks/useOllamaStream';
 
 // The iframe loads this ONCE. Tailwind's runtime + a message listener live here;
@@ -98,7 +98,7 @@ export default function LivePreview({ html, status }: { html: string; status: Ge
                 aria-label={label}
                 aria-pressed={active}
                 className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition cursor-pointer ${
-                  active ? 'bg-white/10 text-ink shadow-glow-violet' : 'text-ink-faint hover:text-ink'
+                  active ? 'bg-white/10 text-ink shadow-glow-amber' : 'text-ink-faint hover:text-ink'
                 }`}
               >
                 <Icon width={15} height={15} />
@@ -114,11 +114,11 @@ export default function LivePreview({ html, status }: { html: string; status: Ge
               initial={{ opacity: 0, x: 8 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0 }}
-              className="flex items-center gap-2 rounded-full border border-violet/30 bg-violet/10 px-3 py-1.5 text-xs font-medium text-violet-bright"
+              className="flex items-center gap-2 rounded-full border border-amber/30 bg-amber/10 px-3 py-1.5 text-xs font-medium text-amber-bright"
             >
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-bright" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-bright" />
               </span>
               Building live
             </motion.div>
@@ -131,7 +131,7 @@ export default function LivePreview({ html, status }: { html: string; status: Ge
         {/* top progress shimmer */}
         {generating && (
           <div className="absolute inset-x-0 top-0 z-20 h-0.5 overflow-hidden">
-            <div className="h-full w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-violet-bright to-transparent" />
+            <div className="h-full w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-amber-bright to-transparent" />
           </div>
         )}
 
@@ -158,16 +158,19 @@ export default function LivePreview({ html, status }: { html: string; status: Ge
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 grid place-items-center bg-base-800/80 px-6 text-center backdrop-blur-sm"
+                className="absolute inset-0 grid place-items-center overflow-hidden bg-base-800 px-6 text-center"
               >
+                {/* crafted backdrop: subtle warm pool + dot texture over solid dark */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(238,155,91,0.10),transparent_52%)]" />
+                <div className="dotgrid absolute inset-0 opacity-[0.04]" />
                 {generating ? (
-                  <div className="flex flex-col items-center gap-4">
-                    <SparkIcon className="h-8 w-8 animate-spin text-violet-bright" />
+                  <div className="relative flex flex-col items-center gap-4">
+                    <SparkIcon className="h-8 w-8 animate-spin text-amber-bright neon-amber" />
                     <p className="font-display text-sm text-ink-soft">Reading your sketch…</p>
                   </div>
                 ) : (
-                  <div className="flex max-w-xs flex-col items-center gap-3">
-                    <div className="grid h-16 w-16 place-items-center rounded-2xl border border-white/10 bg-white/5 text-violet-bright">
+                  <div className="relative flex max-w-xs flex-col items-center gap-3">
+                    <div className="grid h-16 w-16 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-amber-bright shadow-glow-amber">
                       <SparkIcon className="h-7 w-7" />
                     </div>
                     <p className="font-display text-lg font-semibold text-gradient">

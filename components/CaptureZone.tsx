@@ -67,7 +67,7 @@ export default function CaptureZone({ history, activeId, onPicked, onSelectHisto
         }}
         className="glass-hi relative flex flex-1 flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed bg-white/[0.03] p-6 text-center"
       >
-        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-violet/30 to-cyan/20 text-violet-bright shadow-glow-violet">
+        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-amber/30 to-steel/20 text-amber-bright shadow-glow-amber">
           {loading ? (
             <SparkIcon className="animate-spin" />
           ) : (
@@ -99,7 +99,7 @@ export default function CaptureZone({ history, activeId, onPicked, onSelectHisto
         <button
           onClick={() => handleFile(demoSketchFile())}
           disabled={busy}
-          className="group inline-flex items-center gap-1.5 text-xs font-medium text-cyan transition hover:text-cyan-bright disabled:opacity-40 cursor-pointer"
+          className="group inline-flex items-center gap-1.5 text-xs font-medium text-steel transition hover:text-steel-bright disabled:opacity-40 cursor-pointer"
         >
           <BoltIcon width={14} height={14} className="transition group-hover:scale-110" />
           Try a demo sketch
@@ -135,7 +135,7 @@ export default function CaptureZone({ history, activeId, onPicked, onSelectHisto
                 onClick={() => onSelectHistory(item)}
                 className={`group relative aspect-square overflow-hidden rounded-xl border transition cursor-pointer ${
                   item.id === activeId
-                    ? 'border-violet shadow-glow-violet'
+                    ? 'border-amber shadow-glow-amber'
                     : 'border-white/10 hover:border-white/30'
                 }`}
               >

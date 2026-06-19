@@ -1,9 +1,9 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Blueprint - "midnight glass / neon" design system.
- * OLED-dark base, frosted glass panels, electric violet + cyan accents.
- * (Synthesized from ui-ux-pro-max: Dark Mode OLED + minimal glow, monospace for code.)
+ * Blueprint - "cinematic black / warm-cool" design system.
+ * True near-black base, hairline glass, restrained warm-amber (primary) +
+ * cool steel-blue (secondary) directional light. Premium, not neon.
  */
 const config: Config = {
   darkMode: 'class',
@@ -12,28 +12,29 @@ const config: Config = {
     extend: {
       colors: {
         base: {
-          DEFAULT: '#07070B', // OLED near-black
-          800: '#0B0B12',
-          700: '#10101A',
-          600: '#161622',
+          DEFAULT: '#08080A', // true near-black
+          800: '#0C0C10',
+          700: '#121218',
+          600: '#1A1A22',
         },
         ink: {
-          DEFAULT: '#E8EAF5', // primary text
-          soft: '#A6ABC4', // secondary text (>=3:1 on base)
-          faint: '#71768F',
+          DEFAULT: '#ECEDF2', // primary text
+          soft: '#9CA0AD', // secondary
+          faint: '#62646F', // tertiary
         },
-        violet: {
-          DEFAULT: '#8B5CF6',
-          bright: '#A78BFA',
-          deep: '#6D28D9',
+        amber: {
+          DEFAULT: '#EE9B5B', // warm primary (the gauge)
+          bright: '#FFBE86',
+          deep: '#B86B30',
         },
-        cyan: {
-          DEFAULT: '#22D3EE',
-          bright: '#67E8F9',
+        steel: {
+          DEFAULT: '#6FA8E6', // cool secondary (the checkmark)
+          bright: '#A6CEF4',
+          deep: '#3E72C0',
         },
-        magenta: '#E879F9',
-        danger: '#F87171',
-        ok: '#34D399',
+        rose: '#E8896B',
+        danger: '#F0796A',
+        ok: '#56C99A',
       },
       fontFamily: {
         display: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
@@ -46,42 +47,30 @@ const config: Config = {
         '3xl': '1.75rem',
       },
       boxShadow: {
-        glass: '0 8px 40px -12px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,255,255,0.06)',
-        'glow-violet': '0 0 0 1px rgba(139,92,246,0.4), 0 0 28px -4px rgba(139,92,246,0.55)',
-        'glow-cyan': '0 0 0 1px rgba(34,211,238,0.4), 0 0 28px -4px rgba(34,211,238,0.5)',
+        glass:
+          'inset 0 1px 0 0 rgba(255,255,255,0.05), 0 24px 60px -28px rgba(0,0,0,0.85), 0 8px 24px -18px rgba(0,0,0,0.7)',
+        'glow-amber': '0 0 0 1px rgba(238,155,91,0.28), 0 12px 44px -10px rgba(238,155,91,0.4)',
+        'glow-steel': '0 0 0 1px rgba(111,168,230,0.28), 0 12px 44px -10px rgba(111,168,230,0.36)',
       },
       keyframes: {
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        shimmer: {
-          '100%': { transform: 'translateX(100%)' },
-        },
-        'caret-blink': {
-          '0%,100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
-        'pulse-glow': {
-          '0%,100%': { opacity: '0.55' },
-          '50%': { opacity: '1' },
-        },
-        float: {
-          '0%,100%': { transform: 'translate3d(0,0,0) scale(1)' },
-          '50%': { transform: 'translate3d(0,-24px,0) scale(1.06)' },
-        },
-        drift: {
-          '0%,100%': { transform: 'translate3d(0,0,0) scale(1)' },
-          '50%': { transform: 'translate3d(28px,16px,0) scale(1.08)' },
+        shimmer: { '100%': { transform: 'translateX(100%)' } },
+        'caret-blink': { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+        'pulse-soft': { '0%,100%': { opacity: '0.5' }, '50%': { opacity: '1' } },
+        breathe: {
+          '0%,100%': { opacity: '0.5', transform: 'scale(1)' },
+          '50%': { opacity: '0.85', transform: 'scale(1.05)' },
         },
       },
       animation: {
         'fade-up': 'fade-up 320ms cubic-bezier(0.22,1,0.36,1) both',
-        shimmer: 'shimmer 1.6s infinite',
+        shimmer: 'shimmer 1.8s infinite',
         caret: 'caret-blink 1s steps(1) infinite',
-        'pulse-glow': 'pulse-glow 2.4s ease-in-out infinite',
-        float: 'float 14s ease-in-out infinite',
-        drift: 'drift 18s ease-in-out infinite',
+        'pulse-soft': 'pulse-soft 2.6s ease-in-out infinite',
+        breathe: 'breathe 11s ease-in-out infinite',
       },
     },
   },

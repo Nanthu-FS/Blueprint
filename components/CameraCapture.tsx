@@ -93,7 +93,7 @@ export default function CameraCapture({ onCapture, onClose }: Props) {
             <div className="mt-3 flex items-center justify-center">
               <button
                 onClick={snap}
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet to-cyan px-6 py-3 font-display font-semibold text-base-800 shadow-glow-violet transition hover:brightness-110 active:scale-[0.97] cursor-pointer"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber to-steel px-6 py-3 font-display font-semibold text-base-800 shadow-glow-amber transition hover:brightness-110 active:scale-[0.97] cursor-pointer"
               >
                 <CameraIcon width={18} height={18} /> Capture sketch
               </button>
