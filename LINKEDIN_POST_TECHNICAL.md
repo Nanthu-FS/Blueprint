@@ -31,7 +31,7 @@ Technical stack:
 - Framework: Next.js 14 (App Router) with TypeScript
 - Vision model: Ollama gemma4:12b, local inference, kept warm with keep_alive
 - Streaming: route handler transforms Ollama NDJSON into a token text stream; the client coalesces updates on requestAnimationFrame for a 60fps build
-- UI: Tailwind CSS and Framer Motion, an OLED-dark glassmorphism cockpit with violet and cyan accents
+- UI: Tailwind CSS and Framer Motion; a cinematic near-black cockpit with warm-amber and cool steel-blue accents, fine dot-grid texture, and hairline glass
 - Privacy: fully local, no cloud, no API keys; the sketch never leaves the machine
 
 Blueprint is part of an ongoing series of local-first AI applications built on Ollama.
