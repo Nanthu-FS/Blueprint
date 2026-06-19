@@ -74,9 +74,13 @@ export default function LivePreview({ html, status }: { html: string; status: Ge
     post(htmlRef.current);
   }
 
-  // Stream every html update into the already-loaded iframe.
+  // Stream every html update into the iframe. We post UNCONDITIONALLY rather
+  // than gating on a one-shot "ready" signal — that handshake can race and be
+  // missed on fast loads (headless / first paint), leaving the preview blank.
+  // Posts before the iframe loads are harmless no-ops; onLoad backfills the
+  // latest html, and during streaming every subsequent update lands.
   useEffect(() => {
-    if (readyRef.current) post(html);
+    post(html);
   }, [html]);
 
   const hasContent = html.trim().length > 0;
